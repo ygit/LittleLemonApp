@@ -114,7 +114,8 @@ const styles = StyleSheet.create({
     marginLeft: 8,
   },
   footerText: {
-    color: "#EDEFEE",
+    color: "#000",
+    backgroundColor: "lightsalmon",
     fontSize: 16,
     flexWrap: "wrap",
     textAlign: "center",
