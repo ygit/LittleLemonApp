@@ -14,9 +14,7 @@ export default function App() {
         {/*<Welcome />*/}
         <MenuItems />
       </View>
-      <View style={styles.footer}>
-        <LittleLemonFooter />
-      </View>
+      <View style={styles.footer}>{/*<LittleLemonFooter />*/}</View>
     </View>
   );
 }
@@ -35,7 +33,7 @@ const styles = StyleSheet.create({
   },
   welcome: {
     marginTop: 16,
-    flex: 0.75,
+    flex: 0.9,
     width: "100%",
   },
   footer: {

@@ -23,6 +23,17 @@ const menuItemsToDisplay = [
   { name: "Tiramisu", price: "$5.00", id: "20U" },
   { name: "Panna Cotta", price: "$5.00", id: "21V" },
 ];
+
+const Separator = () => <View style={styles.separator} />;
+
+const Header = () => <Text style={styles.headerText}>View Menu</Text>;
+
+const Footer = () => (
+  <Text style={styles.footerText}>
+    All Rights Reserved by Little Lemon, 2024
+  </Text>
+);
+
 export const MenuItems = () => {
   const renderItem = ({ item }: { item: { name: String; price: String } }) => {
     return (
@@ -35,12 +46,14 @@ export const MenuItems = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>Menu Items</Text>
       <FlatList
         style={styles.flatList}
         data={menuItemsToDisplay}
         renderItem={renderItem}
         keyExtractor={(item) => item.id}
+        ItemSeparatorComponent={Separator}
+        ListHeaderComponent={Header}
+        ListFooterComponent={Footer}
       />
     </View>
   );
@@ -52,14 +65,24 @@ const styles = StyleSheet.create({
     backgroundColor: "#495E57",
     alignItems: "center",
   },
-  header: {
+  headerText: {
     color: "white",
     fontSize: 36,
     textAlign: "center",
-    marginTop: 16,
+  },
+  footerText: {
+    color: "white",
+    fontSize: 12,
+    textAlign: "center",
   },
   flatList: {
     width: "100%",
+  },
+  itemContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    padding: 16,
   },
   item: {
     color: "white",
@@ -67,10 +90,10 @@ const styles = StyleSheet.create({
     textAlign: "center",
     marginTop: 16,
   },
-  itemContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    padding: 16,
+  separator: {
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    width: "100%",
+    marginLeft: 16,
+    backgroundColor: "white",
   },
 });
