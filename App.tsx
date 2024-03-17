@@ -2,6 +2,7 @@ import { StyleSheet, View } from "react-native";
 import { LittleLemonHeader } from "./components/LittleLemonHeader";
 import { LittleLemonFooter } from "./components/LittleLemonFooter";
 import { Welcome } from "./components/Welcome";
+import { MenuItems } from "./components/MenuItems";
 
 export default function App() {
   return (
@@ -10,7 +11,8 @@ export default function App() {
         <LittleLemonHeader />
       </View>
       <View style={styles.welcome}>
-        <Welcome />
+        {/*<Welcome />*/}
+        <MenuItems />
       </View>
       <View style={styles.footer}>
         <LittleLemonFooter />
@@ -33,6 +35,8 @@ const styles = StyleSheet.create({
   },
   welcome: {
     marginTop: 16,
+    flex: 0.75,
+    width: "100%",
   },
   footer: {
     backgroundColor: "#F4CE14",
