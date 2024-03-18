@@ -69,7 +69,6 @@ export const MenuItems = () => {
     section: { title: String; data: Array<{ name: String; price: String }> };
   };
   const renderSectionHeader = ({ section }: SectionProps) => {
-    console.log("section", section);
     return <Text style={styles.sectionHeader}>{section.title}</Text>;
   };
 
