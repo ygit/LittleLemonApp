@@ -1,29 +1,51 @@
 import React, { useState } from "react";
-import { ScrollView, Text, StyleSheet, TextInput } from "react-native";
+import {
+  ScrollView,
+  Text,
+  StyleSheet,
+  TextInput,
+  Pressable,
+  View,
+} from "react-native";
 
-export function LoginScreen() {
+export function LoginScreen({ navigation }: { navigation: any }) {
   const [email, onChangeEmail] = useState("");
   const [password, onChangePassword] = useState("");
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  const performLogin = () => {
+    setLoggedIn(true);
+    navigation.replace("Welcome");
+  };
 
   return (
     <ScrollView style={styles.container}>
       <Text style={styles.headerText}>Welcome to Little Lemon</Text>
-      <Text style={styles.regularText}>Login to continue </Text>
-      <TextInput
-        style={styles.inputBox}
-        value={email}
-        onChangeText={onChangeEmail}
-        placeholder={"email"}
-        keyboardType={"email-address"}
-      />
-      <TextInput
-        style={styles.inputBox}
-        value={password}
-        onChangeText={onChangePassword}
-        placeholder={"password"}
-        keyboardType={"default"}
-        secureTextEntry={true}
-      />
+      {loggedIn ? (
+        <Text style={styles.regularText}>You are logged in</Text>
+      ) : (
+        <View style={styles.container}>
+          <Text style={styles.regularText}>Login to continue </Text>
+          <TextInput
+            style={styles.inputBox}
+            value={email}
+            onChangeText={onChangeEmail}
+            placeholder={"email"}
+            keyboardType={"email-address"}
+          />
+          <TextInput
+            style={styles.inputBox}
+            value={password}
+            onChangeText={onChangePassword}
+            placeholder={"password"}
+            keyboardType={"default"}
+            secureTextEntry={true}
+          />
+          <Pressable style={styles.button} onPress={performLogin}>
+            <Text style={styles.buttonText}>Login</Text>
+          </Pressable>
+        </View>
+      )}
     </ScrollView>
   );
 }
@@ -51,7 +73,16 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     padding: 10,
     fontSize: 16,
-    borderColor: "EDEFEE",
     backgroundColor: "#EDEFEE",
+  },
+  button: {
+    alignItems: "center",
+    backgroundColor: "#F4CE14",
+    padding: 10,
+    margin: 12,
+  },
+  buttonText: {
+    color: "#495E57",
+    fontSize: 20,
   },
 });

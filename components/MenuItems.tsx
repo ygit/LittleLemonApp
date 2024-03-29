@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
   innerContainer: {
     paddingHorizontal: 40,
     paddingVertical: 20,
-    backgroundColor: "#333333",
+    backgroundColor: "#fbdabb",
   },
   sectionHeader: {
     backgroundColor: "#fbdabb",
@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   itemText: {
-    color: "#F4CE14",
+    color: "#000",
     fontSize: 24,
   },
   separator: {

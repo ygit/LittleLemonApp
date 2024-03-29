@@ -5,21 +5,43 @@ import { Welcome } from "./components/Welcome";
 import { MenuItems } from "./components/MenuItems";
 import FeebackForm from "./components/FeebackForm";
 import { LoginScreen } from "./components/LoginScreen";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { StrictMode } from "react";
 
 export default function App() {
+  const Stack = createNativeStackNavigator();
+
   return (
-    <View style={styles.container}>
-      <View style={styles.header}>
-        <LittleLemonHeader />
-      </View>
-      <View style={styles.welcome}>
-        {/*<Welcome />*/}
-        {/*<MenuItems />*/}
-        {/*<FeebackForm />*/}
-        <LoginScreen />
-      </View>
-      <View style={styles.footer}>{/*<LittleLemonFooter />*/}</View>
-    </View>
+    <StrictMode>
+      <NavigationContainer>
+        <Stack.Navigator
+          initialRouteName={"Login"}
+          screenOptions={{ headerStyle: { backgroundColor: "#FBDABB" } }}
+        >
+          <Stack.Screen name={"Login"} component={LoginScreen} />
+          <Stack.Screen
+            name={"Welcome"}
+            component={Welcome}
+            options={{ headerTitle: "Home" }}
+          />
+          <Stack.Screen name={"Menu"} component={MenuItems} />
+          <Stack.Screen name={"FeedbackForm"} component={FeebackForm} />
+        </Stack.Navigator>
+        {/*<View style={styles.container}>*/}
+        {/*    <View style={styles.header}>*/}
+        {/*      <LittleLemonHeader />*/}
+        {/*    </View>*/}
+        {/*    <View style={styles.welcome}>*/}
+        {/*      /!*<Welcome />*!/*/}
+        {/*    /!*<MenuItems />*!/*/}
+        {/*    /!*<FeebackForm />*!/*/}
+        {/*    /!*<LoginScreen />*!/*/}
+        {/*    </View>*/}
+        {/*  <View style={styles.footer}>/!*<LittleLemonFooter />*!/</View>*/}
+        {/*</View>*/}
+      </NavigationContainer>
+    </StrictMode>
   );
 }
 
